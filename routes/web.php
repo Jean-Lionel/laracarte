@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\ContactMessageCreated;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/test-mail', function () {
+    return new ContactMessageCreated;
+});
 
 Route::get('/',[
 	'as' => 'root_path',
@@ -30,6 +31,11 @@ Route::get('/about',[
 Route::get('/contact',[
 	'as'=>'contact_path',
 	'uses' => 'ContactsController@create'
+]);
+
+Route::post('/contact',[
+	'as'=>'contact_path',
+	'uses' => 'ContactsController@store'
 ]);
 
 
