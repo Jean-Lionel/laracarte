@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMessageCreated extends Mailable
+class MessageContactedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,18 @@ class ContactMessageCreated extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    public $name;
+    public $mail;
+    public $msg;
+  
+    public function __construct($name, $mail, $msg)
     {
         //
+
+        $this->name = $name;
+        $this->mail = $mail;
+        $this->msg = $msg;
     }
 
     /**
@@ -28,10 +37,6 @@ class ContactMessageCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.created')
-                    ->with([
-                        'name' => 'Jean Lionel'
-                    ]);
-        ;
+        return $this->markdown('messages.mail.mailCreated');
     }
 }

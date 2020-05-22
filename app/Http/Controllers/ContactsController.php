@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactFormRequest;
+use App\Mail\MessageContactedMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactsController extends Controller
 {
@@ -34,9 +36,15 @@ class ContactsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContactFormRequest $request)
+    public function store(Request $request)
     {
-        //$this->validate($request);
+
+        $mailable = new MessageContactedMail($request->name,$request->email,$request->message);
+
+        Mail::to('nijeanlionel@gmail.com')->send($mailable);
+
+
+        return "Done";
 
     }
 
