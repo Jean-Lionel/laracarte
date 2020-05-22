@@ -27,4 +27,9 @@ Route::get('/about',[
 	'uses' => 'pagesController@about'
 ]);
 
+Route::get('/contact',[
+	'as'=>'contact_path',
+	'uses' => 'ContactsController@create'
+]);
+
 

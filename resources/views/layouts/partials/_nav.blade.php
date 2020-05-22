@@ -13,7 +13,9 @@
           <ul class="nav navbar-nav">
             <li class="{{set_active_router('root_path')}}"><a href="{{ route('root_path') }}">Home</a></li>
             <li class="{{set_active_router('about')}}"><a href="{{ route('about') }}">About</a></li>
-            <li><a href="#">Artisans</a></li>
+
+            <li ><a href="#">Artisans</a></li>
+              <li class="{{set_active_router('contact_path')}}" ><a href="{{ route('contact_path') }}">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Planet <span class="caret"></span></a>
               <ul class="dropdown-menu">
