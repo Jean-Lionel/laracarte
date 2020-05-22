@@ -1,7 +1,7 @@
 <?php
 
 function pageTitle($title){
-	$base_title = ' Laracart - List of artisans';
+	$base_title = config('app.name') .  ' - List of artisans';
 
 	if($title)
 		return $title . ' | ' . $base_title;
